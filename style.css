@@ -1,0 +1,457 @@
+/* 1. Réinitialisation globale (Reset CSS) */
+*,
+*::before,
+*::after {
+    /* box-sizing: border-box assure que le padding et la bordure sont inclus dans la largeur et la hauteur de l'élément */
+    box-sizing: border-box; 
+    margin: 0;
+    padding: 0;
+}
+
+/* Défilement fluide sur toute la page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ==================================== */
+/* 16. Animation "Fade-in" au défilement */
+/* ==================================== */
+.reveal {
+    opacity: 0; /* Rendre l'élément invisible par défaut */
+    transform: translateY(30px); /* Le déplacer légèrement vers le bas */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transition fluide */
+}
+
+/* État final : visible et à sa place d'origine */
+.reveal.active {
+    opacity: 1; 
+    transform: translateY(0);
+}
+
+/* ==================================== */
+/* 7. Style de l'Entête (Header) */
+/* ==================================== */
+.main-header {
+    background-color: #fff; /* Fond blanc pour l'entête */
+    padding: 1rem 2rem; /* Espace intérieur (haut/bas et gauche/droite) */
+    border-bottom: 1px solid #ddd; /* Une petite ligne subtile en bas */
+    
+    /* Utilisation de Flexbox pour aligner les éléments sur une seule ligne */
+    display: flex;
+    justify-content: space-between; /* Éloigne le logo de la navigation */
+    align-items: center; /* Centre verticalement le logo et le menu */
+}
+
+.logo h1 {
+    font-size: 1.5rem; /* Taille du titre du logo */
+    color: #007bff; /* Utiliser une couleur vive (par exemple, un bleu) pour le logo/marque */
+}
+
+.main-nav ul {
+    display: flex; /* Utilise Flexbox pour mettre les liens du menu sur une seule ligne */
+    gap: 20px; /* Ajoute un espace entre les éléments de la liste (les liens) */
+}
+
+.main-nav a {
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s; /* Transition fluide au survol */
+}
+
+.main-nav a:hover {
+    color: #007bff; /* Change la couleur au survol */
+}
+
+/* ==================================== */
+/* 14. Style du Menu Toggle (Burger) */
+/* ==================================== */
+.menu-toggle {
+    display: none; /* Masqué par défaut sur les grands écrans */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100; /* Assure qu'il est au-dessus des autres éléments */
+}
+
+.menu-toggle .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: #333; /* Couleur des barres du burger */
+    transition: all 0.3s ease-in-out;
+}
+
+/* 15. Styles Spécifiques Mobile */
+@media (max-width: 768px) {
+    /* Rendre le bouton toggle visible sur mobile */
+    .menu-toggle {
+        display: block; 
+    }
+    
+    /* Masquer le menu de navigation par défaut sur mobile */
+    .main-nav {
+        display: none; 
+        position: absolute;
+        top: 60px; /* Commence sous le header */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding-bottom: 20px;
+        z-index: 99;
+    }
+
+    /* Le JavaScript ajoutera la classe 'open' pour afficher le menu */
+    .main-nav.open {
+        display: block; 
+    }
+
+    .main-nav ul {
+        /* ... styles déjà ajoutés à l'étape 12 ... */
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}
+
+/* ==================================== */
+/* 8. Style de la Section d'Accroche (Hero) */
+/* ==================================== */
+.hero-section {
+    /* Dimensions et alignement */
+    height: 70vh; /* La section prend 70% de la hauteur de la fenêtre (viewport height) */
+    display: flex;
+    justify-content: center; /* Centre horizontalement le contenu */
+    align-items: center; /* Centre verticalement le contenu */
+    text-align: center; /* Centre le texte à l'intérieur du bloc */
+    padding: 0 20px;
+
+    /* Arrière-plan (tu pourras ajouter une image ici plus tard) */
+    background-color: #3f51b5; /* Bleu ou couleur principale de ton choix */
+    color: #fff; /* Texte blanc pour contraste */
+}
+
+.hero-content {
+    max-width: 800px; /* Limite la largeur du texte pour la lisibilité */
+}
+
+.hero-content h1 {
+    font-size: 3rem; /* Grand titre percutant */
+    margin-bottom: 0.5rem;
+}
+
+.hero-content p {
+    font-size: 1.25rem; /* Texte d'accompagnement clair */
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+
+/* ==================================== */
+/* 9. Style des Boutons (CTA) */
+/* ==================================== */
+.btn {
+    display: inline-block; /* Permet de définir un padding et une marge */
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.btn-primary {
+    background-color: #ff9800; /* Couleur d'accentuation (Orange par exemple) */
+    color: #333; /* Texte sombre sur le bouton clair */
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #e68900; /* Assombrissement au survol */
+    transform: translateY(-2px); /* Petit effet de soulèvement au survol */
+}
+
+/* ==================================== */
+/* 10. Style de la Section Solutions (Features) */
+/* ==================================== */
+.features-section {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #fff; /* Fond blanc pour cette section */
+}
+
+.features-section h2 {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    color: #3f51b5; /* Reprise de la couleur principale */
+}
+
+.features-section .subtitle {
+    font-size: 1.15rem;
+    color: #666;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grille de cartes pour les solutions */
+.features-grid {
+    display: grid;
+    /* Crée 3 colonnes de taille égale si l'espace le permet */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px; /* Espace entre les cartes */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Ombre douce et moderne */
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: left; /* Texte aligné à gauche dans les cartes */
+}
+
+.feature-card:hover {
+    transform: translateY(-5px); /* Effet de soulèvement au survol */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 1.35rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #555;
+    line-height: 1.5;
+}
+
+/* ==================================== */
+/* 11. Style de la Section Approche (About) */
+/* ==================================== */
+.about-section {
+    padding: 60px 20px;
+    background-color: #f4f4f4; /* Couleur de fond légère pour différencier */
+}
+
+.about-content {
+    display: flex; /* Utilisation de Flexbox pour les colonnes */
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: center; /* Centre verticalement les deux colonnes */
+}
+
+.about-text {
+    flex: 1; /* Prend l'espace disponible */
+}
+
+.about-text h2 {
+    font-size: 2.2rem;
+    color: #3f51b5;
+    margin-bottom: 0.5rem;
+}
+
+.about-text .subtitle {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.approach-points {
+    margin-bottom: 30px;
+}
+
+.point {
+    margin-bottom: 15px;
+    padding: 10px 0;
+}
+
+.point h3 {
+    color: #ff9800; /* Couleur d'accentuation */
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+/* Style du bouton secondaire (par exemple, pour les cas clients) */
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #3f51b5;
+    color: #3f51b5;
+    padding: 10px 20px;
+}
+
+.btn-secondary:hover {
+    background-color: #3f51b5;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Style du placeholder visuel */
+.about-visual {
+    flex: 1;
+    min-width: 300px; /* Assure une taille minimale */
+}
+
+.placeholder-img {
+    background-color: #ddd;
+    min-height: 350px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* ==================================== */
+/* 12. Style du Pied de page (Footer) */
+/* ==================================== */
+.main-footer {
+    background-color: #222; /* Fond sombre pour le pied de page */
+    color: #f4f4f4; /* Texte clair pour contraste */
+    padding: 40px 20px 20px;
+}
+
+.footer-grid {
+    display: grid;
+    /* Crée 3 colonnes flexibles (ou moins si l'écran est petit) */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto 30px;
+    text-align: left;
+}
+
+.footer-col h3 {
+    font-size: 1.15rem;
+    color: #ff9800; /* Couleur d'accentuation */
+    margin-bottom: 15px;
+}
+
+.footer-col p {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.footer-col ul li {
+    margin-bottom: 8px;
+}
+
+.footer-col a {
+    color: #ccc; /* Couleur des liens du footer */
+    transition: color 0.3s;
+    font-size: 0.9rem;
+}
+
+.footer-col a:hover {
+    color: #fff;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    font-size: 0.8rem;
+}
+
+.footer-bottom a {
+    color: #ccc;
+    margin: 0 10px;
+}
+
+/* 2. Style de base pour le corps de la page */
+body {
+    /* Utiliser une police moderne. 'sans-serif' est une valeur de repli */
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6; /* Améliore la lisibilité du texte */
+    color: #333; /* Couleur de texte sombre standard */
+    background-color: #f4f4f4; /* Une couleur de fond très légère pour le corps */
+}
+
+/* 3. Style de base des liens */
+a {
+    text-decoration: none; /* Supprime le soulignement des liens */
+    color: inherit; /* Les liens héritent de la couleur du texte parent (plus facile à contrôler) */
+}
+
+/* 4. Style de base des listes */
+ul {
+    list-style: none; /* Supprime les puces des listes (utile pour les menus de navigation) */
+}
+
+/* ==================================== */
+/* 13. Media Queries (Adaptation Mobile) */
+/* ==================================== */
+@media (max-width: 768px) {
+    
+    /* 1. Header et Navigation */
+    .main-header {
+        flex-direction: column; /* Empile le logo et le menu sur mobile */
+        padding: 1rem;
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Les liens du menu passent en colonne */
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .main-nav ul li {
+        width: 100%;
+        text-align: center;
+        padding: 5px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    /* 2. Hero Section */
+    .hero-content h1 {
+        font-size: 2rem; /* Réduire la taille du titre */
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    /* 3. Section Solutions (Features) */
+    /* Pas besoin de changement, car "auto-fit minmax" gère déjà le passage à 1 colonne */
+    
+    /* 4. Section Approche (About) */
+    .about-content {
+        flex-direction: column; /* Les deux colonnes (texte et visuel) passent en colonne */
+        gap: 30px;
+    }
+
+    .placeholder-img {
+        min-height: 250px; /* Réduire la hauteur du placeholder */
+    }
+
+    /* 5. Footer */
+    /* Pas besoin de changement, car "auto-fit minmax" gère déjà le passage à 1 colonne */
+    .footer-bottom {
+        display: flex; /* Met les éléments du bas du footer sur la même ligne si possible */
+        flex-direction: column;
+        gap: 5px;
+    }
+}
