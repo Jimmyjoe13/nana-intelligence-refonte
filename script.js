@@ -60,3 +60,22 @@ const revealElements = document.querySelectorAll('.reveal');
 revealElements.forEach(element => {
     observer.observe(element);
 });
+
+// ===================================
+// Logique du bouton Retour en Haut (Back to Top)
+// ===================================
+
+const backToTopBtn = document.getElementById('backToTopBtn');
+
+// Afficher ou masquer le bouton au défilement
+window.addEventListener('scroll', () => {
+    // Si l'utilisateur a défilé de plus de 300px
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        backToTopBtn.style.display = 'block';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+});
+
+// L'effet smooth scroll est déjà géré par le CSS 'scroll-behavior: smooth'
+// donc on n'a pas besoin de code JS pour le clic

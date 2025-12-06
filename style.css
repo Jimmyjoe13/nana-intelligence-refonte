@@ -382,11 +382,25 @@ html {
 
 /* 2. Style de base pour le corps de la page */
 body {
-    /* Utiliser une police moderne. 'sans-serif' est une valeur de repli */
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6; /* Améliore la lisibilité du texte */
-    color: #333; /* Couleur de texte sombre standard */
-    background-color: #f4f4f4; /* Une couleur de fond très légère pour le corps */
+    /* Utiliser une police plus moderne, en conservant Arial comme fallback */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    line-height: 1.7; /* Légèrement plus d'espace entre les lignes pour la lisibilité */
+    color: #444; /* Un gris très sombre au lieu d'un noir pur pour moins de fatigue visuelle */
+    background-color: #ffffff; /* Assurons que le fond principal est blanc */
+}
+
+/* Nouveau style général pour les titres */
+h1, h2, h3 {
+    font-family: 'Georgia', serif; /* Une police différente pour les titres peut améliorer l'UI */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #333; /* Rendre les titres légèrement plus sombres */
+}
+
+/* Tu peux aussi modifier la couleur du logo qui est en h1: */
+.logo h1 {
+    /* Ancienne couleur : #007bff; */
+    color: #3f51b5; /* Harmoniser avec le bleu principal */
 }
 
 /* 3. Style de base des liens */
@@ -454,4 +468,28 @@ ul {
         flex-direction: column;
         gap: 5px;
     }
+}
+
+/* ==================================== */
+/* 17. Bouton Retour en Haut (Back to Top) */
+/* ==================================== */
+.back-to-top {
+    position: fixed; /* Reste visible même en défilant */
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff9800; /* Orange d'accentuation */
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none; /* Masqué par défaut (JavaScript va le montrer) */
+    transition: opacity 0.3s;
+}
+
+.back-to-top:hover {
+    background-color: #e68900;
 }
